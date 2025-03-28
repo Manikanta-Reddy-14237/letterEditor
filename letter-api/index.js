@@ -108,7 +108,7 @@ app.get("/api/oauth/callback", async (req, res) => {
       console.log("New user created.");
     }
 
-    res.redirect(`http://localhost:5173/letter?userId=${user.userId}`);
+    res.redirect(`https://lettereditor-frontend.onrender.com/letter?userId=${user.userId}`);
   } catch (error) {
     console.error("OAuth Callback Error:", error);
     console.error("Error Details:", JSON.stringify(error, null, 2));
