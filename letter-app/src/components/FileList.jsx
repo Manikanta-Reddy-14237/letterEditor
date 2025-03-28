@@ -114,7 +114,7 @@ const FileList = () => {
                 <StyledListItem key={file.fileId} disableGutters>
                   <ListItemText>
                     <Link
-                      to={`http://localhost:5173/viewFile/${file.fileId}?userId=${userId}`}
+                      to={`https://lettereditor-frontend.onrender.com/viewFile/${file.fileId}?userId=${userId}`}
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       {file.fileName}
