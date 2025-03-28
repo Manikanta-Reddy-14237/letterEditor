@@ -1,0 +1,17 @@
+# Node.js dependencies
+**/node_modules/
+
+# Environment variables
+**/.env
+
+# Build artifacts
+phase4/letter-app/dist/
+phase4/letter-api/*.docx
+phase4/letter-api/*.html
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Firebase service account key
+letter-api/serviceAccountKey.json.json
