@@ -28,12 +28,14 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      console.log("AuthStateChanged: User:", currentUser);
     });
     return unsubscribe;
   }, []);
 
   const validateToken = async (token) => {
     if (!token) {
+      console.log("validateToken: No token provided.");
       return false;
     }
     try {
@@ -43,10 +45,10 @@ function App() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(response.data);
+      console.log("validateToken: Response:", response.data);
       return response.data.valid;
     } catch (error) {
-      console.error("Token validation error:", error);
+      console.error("validateToken: Error:", error);
       return false;
     }
   };
@@ -59,19 +61,27 @@ function App() {
     useEffect(() => {
       const validate = async () => {
         const result = await validateToken(token);
+        console.log("ProtectedRoute: Token Validation Result:", result);
         setIsValid(result);
         setTokenValidationLoading(false);
       };
       validate();
     }, [token]);
 
+    console.log("ProtectedRoute: User:", user);
+    console.log("ProtectedRoute: Is Token Valid:", isValid);
+    console.log("ProtectedRoute: Token Validation Loading:", tokenValidationLoading);
+
     if (tokenValidationLoading) {
       return <div>Validating Token...</div>;
     }
 
     if (!user || !isValid) {
+      console.log("ProtectedRoute: Redirecting to /signin");
       return <Navigate to="/signin" replace />;
     }
+
+    console.log("ProtectedRoute: User is authenticated and token is valid.");
     return children;
   };
 
@@ -80,6 +90,7 @@ function App() {
   }
 
   const userIdFromUrl = searchParams.get("userId");
+  console.log("App: UserId from URL:", userIdFromUrl);
 
   const theme = createTheme({
     palette: {
