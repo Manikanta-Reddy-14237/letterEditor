@@ -36,7 +36,7 @@ const FileList = () => {
         return;
       }
       axios
-        .get(`http://localhost:5000/api/userFiles/${userId}`, {
+        .get(`https://lettereditor-backend.onrender.com/api/userFiles/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -67,7 +67,7 @@ const FileList = () => {
     }
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/fileContents/${fileId}?userId=${userId}`,
+        `https://lettereditor-backend.onrender.com/api/fileContents/${fileId}?userId=${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

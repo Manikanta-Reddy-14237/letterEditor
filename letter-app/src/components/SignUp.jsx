@@ -49,14 +49,14 @@ export const SignUp = () => {
       const token = await user.getIdToken();
 
       // Create user in backend
-      await axios.post("http://localhost:5000/api/createUser", {
+      await axios.post("https://lettereditor-backend.onrender.com/api/createUser", {
         firebaseUserId: user.uid,
         email: user.email,
         name: name,
         picture: null,
       });
 
-      const response = await fetch("http://localhost:5000/api/getAppToken", {
+      const response = await fetch("https://lettereditor-backend.onrender.com/api/getAppToken", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!response.ok) {
@@ -77,14 +77,14 @@ export const SignUp = () => {
       const user = userCredential.user;
       const token = await user.getIdToken();
 
-      await axios.post("http://localhost:5000/api/createUser", {
+      await axios.post("https://lettereditor-backend.onrender.com/api/createUser", {
         firebaseUserId: user.uid,
         email: user.email,
         name: user.displayName,
         picture: user.photoURL,
       });
 
-      const response = await fetch("http://localhost:5000/api/getAppToken", {
+      const response = await fetch("https://lettereditor-backend.onrender.com/api/getAppToken", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!response.ok) {

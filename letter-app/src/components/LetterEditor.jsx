@@ -78,7 +78,7 @@ export const LetterEditor = () => {
         return;
       }
       const response = await axios.get(
-        `http://localhost:5000/api/checkAuth/${userId}`,
+        `https://lettereditor-backend.onrender.com/api/checkAuth/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -95,7 +95,7 @@ export const LetterEditor = () => {
   const initiateOAuth = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/authUrl");
+      const response = await axios.get("https://lettereditor-backend.onrender.com/api/authUrl");
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
       console.error("OAuth error:", error);
@@ -128,7 +128,7 @@ export const LetterEditor = () => {
       let response;
       if (fileIdToEdit) {
         response = await axios.put(
-          `http://localhost:5000/api/updateFile/${fileIdToEdit}`,
+          `https://lettereditor-backend.onrender.com/api/updateFile/${fileIdToEdit}`,
           dataToSend,
           {
             headers: {
@@ -138,7 +138,7 @@ export const LetterEditor = () => {
         );
       } else {
         response = await axios.post(
-          "http://localhost:5000/api/saveToDrive",
+          "https://lettereditor-backend.onrender.com/api/saveToDrive",
           dataToSend,
           {
             headers: {

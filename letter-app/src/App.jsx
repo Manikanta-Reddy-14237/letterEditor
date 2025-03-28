@@ -38,7 +38,7 @@ function App() {
     }
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/validateToken",
+        "https://lettereditor-backend.onrender.com/api/validateToken",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

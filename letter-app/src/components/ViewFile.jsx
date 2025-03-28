@@ -42,7 +42,7 @@ const ViewFile = () => {
       }
       axios
         .get(
-          `http://localhost:5000/api/fileContents/${fileId}?userId=${userId}`,
+          `https://lettereditor-backend.onrender.com/api/fileContents/${fileId}?userId=${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
